@@ -1,15 +1,23 @@
 import type { CommunityEvent, CommunityEventDetails } from "@/types/event";
 
-const API_URL = process.env.API_URL ?? "http://localhost:5000";
-
+const API_URL = (
+  process.env.SERVER_BASE_URL ?? "http://localhost:5000"
+).replace(/\/+$/, "");
 
 export async function getAllEvents(): Promise<CommunityEvent[]> {
-  const response = await fetch(`${API_URL}/all-events`, {
+  const url = `${API_URL}/all-events`;
+
+  console.log("Fetching events from:", url);
+
+  const response = await fetch(url, {
     cache: "no-store",
   });
 
   if (!response.ok) {
-    throw new Error("Failed to load events");
+    const error = await response.text();
+    console.error("Events API error:", response.status, error);
+
+    throw new Error(`Failed to load events: ${response.status}`);
   }
 
   return response.json();
@@ -22,9 +30,7 @@ export async function getEventById(
     cache: "no-store",
   });
 
-  if (response.status === 404) {
-    return null;
-  }
+  if (response.status === 404) return null;
 
   if (!response.ok) {
     throw new Error("Failed to load event");
