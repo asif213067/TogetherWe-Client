@@ -10,9 +10,9 @@ import {
 } from "react-icons/fa6";
 
 const exploreLinks = [
-  { label: "Home", href: "/#home" },
-  { label: "Upcoming Events", href: "/#upcoming-events" },
-  { label: "Gallery", href: "/#gallery" },
+  { label: "Home", href: "/" },
+  { label: "Upcoming Events", href: "/events" },
+  { label: "Gallery", href: "/gallery" },
 ];
 
 const accountLinks = [

@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="pointer-events-none absolute -top-40 -right-32 size-130 rounded-full bg-highlight/50 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-48 -left-32 size-120 rounded-full bg-pink-400/40 blur-3xl" />
 
-      <div className="relative mx-auto grid max-w-300 items-center gap-14 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:gap-12 lg:py-28 lg:pb-32">
+      <div className="relative mx-auto grid max-w-300 items-center gap-14 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:gap-12 lg:pt-14 lg:pb-32">
         <div className="flex flex-col items-start">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium ring-1 ring-white/25 backdrop-blur">
             <span className="size-2 rounded-full bg-highlight" />
