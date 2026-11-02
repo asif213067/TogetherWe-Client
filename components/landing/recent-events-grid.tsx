@@ -2,9 +2,12 @@ import EventCard from "@/components/events/event-card";
 import EventsEmptyState from "@/components/events/events-empty-state";
 import { getRecentEvents } from "@/lib/api";
 import type { CommunityEvent } from "@/types/event";
+import { connection } from "next/server";
 
 const RecentEventsGrid = async () => {
   let events: CommunityEvent[];
+
+  await connection();
 
   try {
     events = await getRecentEvents();
