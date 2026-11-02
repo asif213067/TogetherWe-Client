@@ -30,7 +30,7 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/85 backdrop-blur-xl">
       <nav className="mx-auto flex h-18 max-w-300 items-center justify-between gap-4 px-4 sm:px-6">
         <Link
-          href="/#home"
+          href="/"
           className="shrink-0"
           aria-label="TogetherWe homepage"
         >

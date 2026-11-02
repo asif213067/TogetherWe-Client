@@ -1,6 +1,8 @@
 import Image from "next/image";
 
 import SectionHeading from "@/components/shared/section-heading";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const galleryItems = [
   {
@@ -64,6 +66,19 @@ const Gallery = () => {
               </figcaption>
             </figure>
           ))}
+        </div>
+
+        <div className="mt-8 flex justify-center lg:justify-end">
+          <Link
+            href="/gallery"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+          >
+            View full gallery
+            <ArrowRight
+              size={16}
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            />
+          </Link>
         </div>
       </div>
     </section>

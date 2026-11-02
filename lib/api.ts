@@ -1,8 +1,11 @@
 import type { CommunityEvent, CommunityEventDetails } from "@/types/event";
+import type { GalleryItem } from "@/types/gallery";
+
 
 const API_URL = (
   process.env.SERVER_BASE_URL ?? "http://localhost:5000"
 ).replace(/\/+$/, "");
+
 
 export async function getAllEvents(): Promise<CommunityEvent[]> {
   const url = `${API_URL}/all-events`;
@@ -34,6 +37,19 @@ export async function getEventById(
 
   if (!response.ok) {
     throw new Error("Failed to load event");
+  }
+
+  return response.json();
+}
+
+
+export async function getGalleryItems(): Promise<GalleryItem[]> {
+  const response = await fetch(`${API_URL}/gallery`, {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to load gallery");
   }
 
   return response.json();
