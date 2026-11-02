@@ -39,12 +39,25 @@ const galleryItems = [
 
 const Gallery = () => {
   return (
-    <section id="gallery" className="scroll-mt-18 bg-muted/60 py-20 sm:py-24">
+    <section id="gallery" className="scroll-mt-18 py-20 sm:py-24">
       <div className="mx-auto max-w-300 px-4 sm:px-6">
-        <SectionHeading
-          title="Our community in action"
-          description="Moments from events organised by people like you."
-        />
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeading
+            title="Our community in action"
+            description="Moments from events organised by people like you."
+          />
+
+          <Link
+            href="/gallery"
+            className="group inline-flex shrink-0 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+          >
+            View full gallery
+            <ArrowRight
+              size={16}
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            />
+          </Link>
+        </div>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {galleryItems.map((item) => (
@@ -66,19 +79,6 @@ const Gallery = () => {
               </figcaption>
             </figure>
           ))}
-        </div>
-
-        <div className="mt-8 flex justify-center lg:justify-end">
-          <Link
-            href="/gallery"
-            className="group inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-          >
-            View full gallery
-            <ArrowRight
-              size={16}
-              className="transition-transform duration-200 group-hover:translate-x-1"
-            />
-          </Link>
         </div>
       </div>
     </section>

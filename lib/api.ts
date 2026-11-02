@@ -1,11 +1,9 @@
 import type { CommunityEvent, CommunityEventDetails } from "@/types/event";
 import type { GalleryItem } from "@/types/gallery";
 
-
 const API_URL = (
   process.env.SERVER_BASE_URL ?? "http://localhost:5000"
 ).replace(/\/+$/, "");
-
 
 export async function getAllEvents(): Promise<CommunityEvent[]> {
   const url = `${API_URL}/all-events`;
@@ -42,7 +40,6 @@ export async function getEventById(
   return response.json();
 }
 
-
 export async function getGalleryItems(): Promise<GalleryItem[]> {
   const response = await fetch(`${API_URL}/gallery`, {
     cache: "no-store",
@@ -50,6 +47,20 @@ export async function getGalleryItems(): Promise<GalleryItem[]> {
 
   if (!response.ok) {
     throw new Error("Failed to load gallery");
+  }
+
+  return response.json();
+}
+
+
+// Get Recent 6 Events for the Landing page
+export async function getRecentEvents(): Promise<CommunityEvent[]> {
+  const response = await fetch(`${API_URL}/recent-events`, {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to load recent events");
   }
 
   return response.json();
