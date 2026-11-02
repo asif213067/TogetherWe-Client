@@ -7,9 +7,13 @@ type LogoProps = {
 
 const Logo = ({ className, variant = "default" }: LogoProps) => {
   return (
-    <span className={cn("flex items-center gap-2.5", className)}>
-      <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-gradient shadow-md shadow-primary/25">
-        <svg viewBox="6 3 52 52" className="size-7" aria-hidden="true">
+    <span className={cn("flex items-center gap-2 sm:gap-2.5", className)}>
+      <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-brand-gradient shadow-md shadow-primary/25 sm:size-10">
+        <svg
+          viewBox="6 3 52 52"
+          className="size-6 sm:size-7"
+          aria-hidden="true"
+        >
           <circle cx="24" cy="23" r="7" fill="#fff" />
           <circle cx="40" cy="23" r="7" fill="#fff" fillOpacity="0.82" />
           <path d="M12 50C12 38 18 32 24 32C30 32 36 38 36 50Z" fill="#fff" />
@@ -24,7 +28,7 @@ const Logo = ({ className, variant = "default" }: LogoProps) => {
 
       <span
         className={cn(
-          "font-heading text-xl font-extrabold tracking-tight",
+          "font-heading text-lg font-extrabold tracking-tight whitespace-nowrap sm:text-xl",
           variant === "light" ? "text-white" : "text-foreground",
         )}
       >

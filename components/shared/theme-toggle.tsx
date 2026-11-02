@@ -12,7 +12,7 @@ const ThemeToggle = () => {
     <Button
       variant="outline"
       size="icon"
-      className="size-11 rounded-xl border-border text-foreground"
+      className="size-10 rounded-xl border-border text-foreground sm:size-11"
       aria-label="Toggle theme"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >

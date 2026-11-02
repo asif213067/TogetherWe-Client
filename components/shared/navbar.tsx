@@ -23,17 +23,16 @@ const navLinks = [
 ];
 
 const brandButton =
-  "inline-flex h-11 items-center justify-center rounded-xl bg-brand-gradient px-6 text-sm font-semibold text-white shadow-md shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/35";
+  "items-center justify-center rounded-xl bg-brand-gradient text-sm font-semibold whitespace-nowrap text-white shadow-md shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/35";
+
+const navLoginButton = `hidden h-10 px-4 min-[360px]:inline-flex sm:h-11 sm:px-6 ${brandButton}`;
+const sheetLoginButton = `flex h-11 w-full px-6 ${brandButton}`;
 
 const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/85 backdrop-blur-xl">
-      <nav className="mx-auto flex h-18 max-w-300 items-center justify-between gap-4 px-4 sm:px-6">
-        <Link
-          href="/"
-          className="shrink-0"
-          aria-label="TogetherWe homepage"
-        >
+      <nav className="mx-auto flex h-16 max-w-300 items-center justify-between gap-2 px-4 sm:h-18 sm:gap-4 sm:px-6">
+        <Link href="/" className="shrink-0" aria-label="TogetherWe homepage">
           <Logo />
         </Link>
 
@@ -49,13 +48,10 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
           <ThemeToggle />
 
-          <Link
-            href="/login"
-            className={`hidden md:inline-flex ${brandButton}`}
-          >
+          <Link href="/login" className={navLoginButton}>
             Login
           </Link>
 
@@ -66,7 +62,7 @@ const Navbar = () => {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="size-11 rounded-xl border-border text-foreground"
+                    className="size-10 rounded-xl border-border text-foreground sm:size-11"
                     aria-label="Open navigation menu"
                   >
                     <Menu size={22} />
@@ -107,7 +103,7 @@ const Navbar = () => {
                     <SheetClose
                       nativeButton={false}
                       render={
-                        <Link href="/login" className={`w-full ${brandButton}`}>
+                        <Link href="/login" className={sheetLoginButton}>
                           Login
                         </Link>
                       }
