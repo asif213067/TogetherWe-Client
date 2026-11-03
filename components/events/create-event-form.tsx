@@ -409,7 +409,7 @@ export default function CreateEventForm({ onSuccess }: CreateEventFormProps) {
             variant="outline"
             onClick={handleResetRequest}
             disabled={loading}
-            className="h-11 flex-1 rounded-xl border-border bg-background text-sm font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:text-primary disabled:translate-y-0 sm:text-base"
+            className="h-11 flex-1 rounded-xl border-border bg-background py-4 text-sm font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent hover:text-primary disabled:translate-y-0 sm:text-base"
           >
             <RotateCcw className="size-4" />
             Reset Form
@@ -418,7 +418,7 @@ export default function CreateEventForm({ onSuccess }: CreateEventFormProps) {
           <Button
             type="submit"
             disabled={loading}
-            className="h-11 flex-1 rounded-xl bg-brand-gradient text-sm font-semibold text-white shadow-md shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/35 disabled:translate-y-0 disabled:opacity-70 sm:text-base"
+            className="h-11 flex-1 rounded-xl bg-brand-gradient py-4 text-sm font-semibold text-white shadow-md shadow-primary/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/35 disabled:translate-y-0 disabled:opacity-70 sm:text-base"
           >
             {loading ? (
               <>

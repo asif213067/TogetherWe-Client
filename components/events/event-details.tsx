@@ -1,11 +1,9 @@
-
 import Link from "next/link";
 import {
   ArrowLeft,
   CalendarDays,
   MapPin,
   Users,
-  UserRound,
 } from "lucide-react";
 
 import EventThumbnail from "@/components/events/event-thumbnail";
@@ -38,8 +36,8 @@ const EventDetails = ({ event }: EventDetailsProps) => {
   ];
 
   return (
-    <main className="flex-1">
-      <div className="mx-auto max-w-300 px-4 py-8 sm:px-6 sm:py-12">
+    <main className="flex-1 min-w-0">
+      <div className="mx-auto w-full max-w-300 min-w-0 px-4 py-8 sm:px-6 sm:py-12">
         <Link
           href="/events"
           className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
@@ -52,18 +50,20 @@ const EventDetails = ({ event }: EventDetailsProps) => {
           <EventThumbnail src={event.thumbnail} alt={event.title} eager />
         </div>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_22rem] lg:items-start">
-          <div>
-            <span className="inline-flex rounded-full bg-accent px-4 py-1.5 text-sm font-semibold text-primary">
+        <div className="mt-10 grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
+          {/* Main event content */}
+          <div className="min-w-0 max-w-full">
+            <span className="inline-flex max-w-full rounded-full bg-accent px-4 py-1.5 text-sm font-semibold text-primary">
               {event.eventType}
             </span>
 
-            <h1 className="mt-4 font-heading text-3xl leading-tight font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            <h1 className="mt-4 min-w-0 max-w-full whitespace-normal break-words [overflow-wrap:anywhere] font-heading text-3xl leading-tight font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               {event.title}
             </h1>
 
-            <div className="mt-5 flex items-center gap-3">
-              <Avatar className="size-10">
+            {/* Organizer */}
+            <div className="mt-5 flex min-w-0 items-center gap-3">
+              <Avatar className="size-10 shrink-0">
                 <AvatarImage
                   src={event.organizerPhoto ?? undefined}
                   alt={event.organizerName}
@@ -74,41 +74,49 @@ const EventDetails = ({ event }: EventDetailsProps) => {
                 </AvatarFallback>
               </Avatar>
 
-              <div className="leading-tight">
-                <p className="text-xs text-muted-foreground">Hosted by</p>
-                <p className="text-sm font-semibold text-foreground">
+              <div className="min-w-0 leading-tight">
+                <p className="text-xs text-muted-foreground">
+                  Hosted by
+                </p>
+
+                <p className="min-w-0 whitespace-normal break-words [overflow-wrap:anywhere] text-sm font-semibold text-foreground">
                   {event.organizerName}
                 </p>
               </div>
             </div>
 
+            {/* Description */}
             <h2 className="mt-8 font-heading text-xl font-bold text-foreground">
               About this event
             </h2>
 
-            <p className="mt-3 text-base leading-relaxed whitespace-pre-line text-muted-foreground sm:text-lg">
+            <p className="mt-3 min-w-0 max-w-full whitespace-pre-line break-words [overflow-wrap:anywhere] text-base leading-relaxed text-muted-foreground sm:text-lg">
               {event.description}
             </p>
           </div>
 
-          <aside className="rounded-2xl border border-border bg-card p-6 shadow-sm lg:sticky lg:top-24">
+          {/* Event information sidebar */}
+          <aside className="min-w-0 max-w-full rounded-2xl border border-border bg-card p-6 shadow-sm lg:sticky lg:top-24">
             <h2 className="font-heading text-lg font-bold text-card-foreground">
               Event details
             </h2>
 
-            <ul className="mt-5 flex flex-col gap-4">
+            <ul className="mt-5 flex min-w-0 flex-col gap-4">
               {facts.map((fact) => (
-                <li key={fact.label} className="flex items-start gap-3">
+                <li
+                  key={fact.label}
+                  className="flex min-w-0 items-start gap-3"
+                >
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary">
                     <fact.icon size={20} />
                   </span>
 
-                  <div className="leading-tight">
+                  <div className="min-w-0 flex-1 leading-tight">
                     <p className="text-xs text-muted-foreground">
                       {fact.label}
                     </p>
 
-                    <p className="mt-1 text-sm font-semibold text-card-foreground">
+                    <p className="mt-1 min-w-0 whitespace-normal break-words [overflow-wrap:anywhere] text-sm font-semibold text-card-foreground">
                       {fact.value}
                     </p>
                   </div>

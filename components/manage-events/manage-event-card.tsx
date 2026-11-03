@@ -37,7 +37,7 @@ const ManageEventCard = ({ event, onEdit, onDelete }: ManageEventCardProps) => {
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-5">
-        <h3 className="line-clamp-2 min-h-13 font-heading text-lg leading-snug font-bold text-card-foreground">
+        <h3 className="truncate font-heading text-lg leading-snug font-bold text-card-foreground">
           {event.title}
         </h3>
 
