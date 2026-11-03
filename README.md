@@ -4,10 +4,12 @@
 helps people discover local social-development activities, create
 community-service events, join events, and manage their participation.
 
-> **Live Website:** https://togetherwe-client-by-asif.vercel.app
-> **Backend API:** https://togetherwe-server.onrender.com
-> **Project Repository:** https://github.com/asif213067/TogetherWe-Client
-> **Server Repository:** https://github.com/asif213067/TogetherWE-Server
+## Project Links
+
+- **Live Website:** [TogetherWe](https://togetherwe-client-by-asif.vercel.app/)
+- **Backend API:** [TogetherWe Server](https://togetherwe-server.onrender.com)
+- **Client Repository:** [TogetherWe Client](https://github.com/asif213067/TogetherWe-Client)
+- **Server Repository:** [TogetherWe Server](https://github.com/asif213067/TogetherWE-Server)
 
 ------------------------------------------------------------------------
 
