@@ -14,6 +14,7 @@ import GoogleAuthSection from "@/components/auth/google-auth-section";
 import { authClient } from "@/lib/auth-client";
 import { getSafeRedirect } from "@/lib/utils";
 import { loginSchema, type LoginValues } from "@/lib/validations/auth";
+import RedirectIfAuthenticated from "./redirect-if-authenticated";
 
 type LoginFormProps = {
   googleEnabled: boolean;
@@ -71,6 +72,7 @@ const LoginForm = ({ googleEnabled }: LoginFormProps) => {
         </>
       }
     >
+      <RedirectIfAuthenticated to={callbackUrl} />
       <form
         onSubmit={handleSubmit(onSubmit, onInvalid)}
         noValidate

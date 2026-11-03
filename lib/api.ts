@@ -2,9 +2,11 @@ import type { CommunityEvent, CommunityEventDetails } from "@/types/event";
 import type { GalleryItem } from "@/types/gallery";
 
 const API_URL = (
-  process.env.SERVER_BASE_URL ?? "http://localhost:5000"
+  process.env.NEXT_PUBLIC_SERVER_BASE_URL ?? "http://localhost:5000"
 ).replace(/\/+$/, "");
 
+
+// Get all-events data for the upcoming event page
 export async function getAllEvents(): Promise<CommunityEvent[]> {
   const url = `${API_URL}/all-events`;
 
@@ -24,6 +26,7 @@ export async function getAllEvents(): Promise<CommunityEvent[]> {
   return response.json();
 }
 
+// get data for view details page
 export async function getEventById(
   id: string,
 ): Promise<CommunityEventDetails | null> {
@@ -40,6 +43,8 @@ export async function getEventById(
   return response.json();
 }
 
+
+// Get data for gallery page
 export async function getGalleryItems(): Promise<GalleryItem[]> {
   const response = await fetch(`${API_URL}/gallery`, {
     cache: "no-store",

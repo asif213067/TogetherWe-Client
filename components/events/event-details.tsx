@@ -1,9 +1,18 @@
+
 import Link from "next/link";
-import { ArrowLeft, CalendarDays, MapPin, Users } from "lucide-react";
+import {
+  ArrowLeft,
+  CalendarDays,
+  MapPin,
+  Users,
+  UserRound,
+} from "lucide-react";
 
 import EventThumbnail from "@/components/events/event-thumbnail";
 import { formatEventDate } from "@/lib/format";
 import type { CommunityEventDetails } from "@/types/event";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { getInitials } from "@/lib/utils";
 
 type EventDetailsProps = {
   event: CommunityEventDetails;
@@ -16,7 +25,11 @@ const EventDetails = ({ event }: EventDetailsProps) => {
       label: "Date",
       value: formatEventDate(event.eventDate),
     },
-    { icon: MapPin, label: "Location", value: event.location },
+    {
+      icon: MapPin,
+      label: "Location",
+      value: event.location,
+    },
     {
       icon: Users,
       label: "Participants",
@@ -49,9 +62,30 @@ const EventDetails = ({ event }: EventDetailsProps) => {
               {event.title}
             </h1>
 
+            <div className="mt-5 flex items-center gap-3">
+              <Avatar className="size-10">
+                <AvatarImage
+                  src={event.organizerPhoto ?? undefined}
+                  alt={event.organizerName}
+                  referrerPolicy="no-referrer"
+                />
+                <AvatarFallback className="bg-brand-gradient text-sm font-semibold text-white">
+                  {getInitials(event.organizerName)}
+                </AvatarFallback>
+              </Avatar>
+
+              <div className="leading-tight">
+                <p className="text-xs text-muted-foreground">Hosted by</p>
+                <p className="text-sm font-semibold text-foreground">
+                  {event.organizerName}
+                </p>
+              </div>
+            </div>
+
             <h2 className="mt-8 font-heading text-xl font-bold text-foreground">
               About this event
             </h2>
+
             <p className="mt-3 text-base leading-relaxed whitespace-pre-line text-muted-foreground sm:text-lg">
               {event.description}
             </p>
@@ -68,10 +102,12 @@ const EventDetails = ({ event }: EventDetailsProps) => {
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary">
                     <fact.icon size={20} />
                   </span>
+
                   <div className="leading-tight">
                     <p className="text-xs text-muted-foreground">
                       {fact.label}
                     </p>
+
                     <p className="mt-1 text-sm font-semibold text-card-foreground">
                       {fact.value}
                     </p>
@@ -92,6 +128,7 @@ const EventDetails = ({ event }: EventDetailsProps) => {
                 >
                   Join Event
                 </Link>
+
                 <p className="mt-3 text-center text-xs text-muted-foreground">
                   You need to log in to join this event.
                 </p>

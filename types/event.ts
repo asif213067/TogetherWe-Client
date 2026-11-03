@@ -12,4 +12,10 @@ export type CommunityEvent = {
 
 export type CommunityEventDetails = CommunityEvent & {
   hasEnded: boolean;
+  organizerName: string;
+  organizerPhoto?: string | null;
+};
+
+export type ManagedEvent = CommunityEvent & {
+  hasEnded: boolean;
 };
