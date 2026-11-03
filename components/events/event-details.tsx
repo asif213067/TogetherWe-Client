@@ -1,16 +1,19 @@
 import Link from "next/link";
-import {
-  ArrowLeft,
-  CalendarDays,
-  MapPin,
-  Users,
-} from "lucide-react";
+// import {
+//   ArrowLeft,
+//   CalendarDays,
+//   MapPin,
+//   Users,
+// } from "lucide-react";
+// change the import to
+import { ArrowLeft, CalendarDays, MapPin } from "lucide-react";
 
 import EventThumbnail from "@/components/events/event-thumbnail";
 import { formatEventDate } from "@/lib/format";
 import type { CommunityEventDetails } from "@/types/event";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getInitials } from "@/lib/utils";
+import JoinEventPanel from "@/components/events/join-event-panel";
 
 type EventDetailsProps = {
   event: CommunityEventDetails;
@@ -28,11 +31,11 @@ const EventDetails = ({ event }: EventDetailsProps) => {
       label: "Location",
       value: event.location,
     },
-    {
-      icon: Users,
-      label: "Participants",
-      value: `${event.participantCount} joined`,
-    },
+    // {
+    //   icon: Users,
+    //   label: "Participants",
+    //   value: `${event.participantCount} joined`,
+    // },
   ];
 
   return (
@@ -75,9 +78,7 @@ const EventDetails = ({ event }: EventDetailsProps) => {
               </Avatar>
 
               <div className="min-w-0 leading-tight">
-                <p className="text-xs text-muted-foreground">
-                  Hosted by
-                </p>
+                <p className="text-xs text-muted-foreground">Hosted by</p>
 
                 <p className="min-w-0 whitespace-normal break-words [overflow-wrap:anywhere] text-sm font-semibold text-foreground">
                   {event.organizerName}
@@ -103,10 +104,7 @@ const EventDetails = ({ event }: EventDetailsProps) => {
 
             <ul className="mt-5 flex min-w-0 flex-col gap-4">
               {facts.map((fact) => (
-                <li
-                  key={fact.label}
-                  className="flex min-w-0 items-start gap-3"
-                >
+                <li key={fact.label} className="flex min-w-0 items-start gap-3">
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary">
                     <fact.icon size={20} />
                   </span>
@@ -124,7 +122,7 @@ const EventDetails = ({ event }: EventDetailsProps) => {
               ))}
             </ul>
 
-            {event.hasEnded ? (
+            {/* {event.hasEnded ? (
               <p className="mt-6 rounded-xl bg-muted px-4 py-3 text-center text-sm font-medium text-muted-foreground">
                 This event has ended
               </p>
@@ -141,7 +139,13 @@ const EventDetails = ({ event }: EventDetailsProps) => {
                   You need to log in to join this event.
                 </p>
               </>
-            )}
+            )} */}
+
+            <JoinEventPanel
+              eventId={event._id}
+              initialCount={event.participantCount}
+              hasEnded={event.hasEnded}
+            />
           </aside>
         </div>
       </div>

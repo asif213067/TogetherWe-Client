@@ -19,3 +19,14 @@ export type CommunityEventDetails = CommunityEvent & {
 export type ManagedEvent = CommunityEvent & {
   hasEnded: boolean;
 };
+
+export type ParticipationState = {
+  joined: boolean;
+  participantCount: number;
+};
+
+export type JoinedEvent = CommunityEvent & {
+  hasEnded: boolean;
+  organizerName: string;
+  joinedAt: string;
+};

@@ -1,5 +1,9 @@
 import { authClient } from "@/lib/auth-client";
-import type { ManagedEvent } from "@/types/event";
+import type {
+  JoinedEvent,
+  ManagedEvent,
+  ParticipationState,
+} from "@/types/event";
 
 const API_BASE = (
   process.env.NEXT_PUBLIC_SERVER_BASE_URL ?? "http://localhost:5000"
@@ -99,4 +103,26 @@ export function deleteEvent(id: string) {
   return authorizedRequest<ActionResponse>(`/events/${id}`, {
     method: "DELETE",
   });
+}
+
+type ParticipationActionResponse = ActionResponse & ParticipationState;
+
+export function getParticipation(id: string) {
+  return authorizedRequest<ParticipationState>(`/events/${id}/participation`);
+}
+
+export function joinEvent(id: string) {
+  return authorizedRequest<ParticipationActionResponse>(`/events/${id}/join`, {
+    method: "POST",
+  });
+}
+
+export function leaveEvent(id: string) {
+  return authorizedRequest<ParticipationActionResponse>(`/events/${id}/join`, {
+    method: "DELETE",
+  });
+}
+
+export function getJoinedEvents() {
+  return authorizedRequest<JoinedEvent[]>("/joined-events");
 }
