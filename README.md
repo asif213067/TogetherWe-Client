@@ -343,6 +343,7 @@ Full-Stack Developer
 
 -   Website: https://togetherwe-client-by-asif.vercel.app/
 -   GitHub: https://github.com/asif213067
+-   Linkedin: https://www.linkedin.com/in/asif-hosen
 
 ------------------------------------------------------------------------
 
